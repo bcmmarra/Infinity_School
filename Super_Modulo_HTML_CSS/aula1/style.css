@@ -1,0 +1,129 @@
+/* Reset CSS */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+   This is a free CSS reset, which means you can use it in any project, commercial or non-commercial, without any restrictions. */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+    box-sizing: border-box;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-fundo: #f4f2fd;
+    --branco: #FFFFFF;
+    --azul-escuro: #202842;
+
+    --fonte-principal: "Nunito", sans-serif, arial;
+}
+
+body{
+    font-family: var(--fonte-principal);
+    color: var(--azul-escuro);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;     /* Centraliza verticalmente */
+    margin: 0;
+}
+
+main{
+    background-color: var(--cor-fundo);
+    
+    border-radius: 16px;
+    padding: 2rem 3rem; /*2rem = 32px | 3rem = 48px* | usar o rem no lugar no px é melhor para o caso de responsividade*/
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+
+    max-width: 962px;
+}
+
+.card{
+    background-color: var(--branco);
+
+    padding: 2rem;
+    border-radius: 8px;
+
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.25);
+
+}
+
+.card h2{
+    font-weight: bold;
+    font-size: 2rem; /*32px*/
+}
+
+.card__preco{
+    font-weight: 600;
+    font-size: 2.25rem; /*36px*/
+    margin-top: 1rem;
+}
+
+.card ul{
+    margin-top: 1rem;
+}
+
+.card ul li{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.card ul li svg{
+    fill: var(--azul-escuro);
+}
+
+.card button{
+    background-color: var(--azul-escuro);
+    color: var(--branco);
+    border: none;
+    width: 100%;
+    padding: 0.5rem 1.5rem; /*8px 24px*/
+    border-radius: 9999px;
+    font-weight: bold;
+    
+    cursor: pointer;
+    margin-top: 2rem; /*32px*/
+}
