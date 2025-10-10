@@ -36,5 +36,11 @@ palavra = input('Digite uma palavra:')
 dicionario = dic_vogais(palavra)
 
 print(dicionario)
+print(f'A: {dicionario["a"]}')
+print(f'E: {dicionario["e"]}')
+print(f'I: {dicionario["i"]}')
+print(f'O: {dicionario["o"]}')
+print(f'U: {dicionario["u"]}')
+
 
 
