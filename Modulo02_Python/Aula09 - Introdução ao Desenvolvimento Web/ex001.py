@@ -1,4 +1,5 @@
 from flask import Flask
+from http import HTTPStatus
 
 pessoas = [
     {
@@ -23,6 +24,9 @@ app.json.sort_keys = False
 
 @app.route('/pessoas')
 def listar_pessoas():
-    return pessoas
+    if len(pessoas) == 0:
+        return ('',HTTPStatus.NO_CONTENT)
+    
+    return (pessoas, HTTPStatus.OK)
 
 app.run(debug=True)
