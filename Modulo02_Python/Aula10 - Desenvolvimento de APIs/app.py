@@ -1,3 +1,9 @@
+# Comando para Criar o arquivo com as dependencias desse ambiente virtual
+# pip freeze > requirements.txt
+
+# Comando para instalar as dependencias do arquivo requirements.txt
+# pip install -r .\requirements.txt
+
 import uuid # Gera o ID automatico e unico.
 from flask import Flask, request 
 from http import HTTPStatus
@@ -20,6 +26,19 @@ app.json.sort_keys = False
 #Quando não passamos o methods, por padrão ele coloca somente o método GET methods=['GET], buscar
 @app.route('/animais', methods=['GET'])
 def listar_animais():
+	query = dict(request.args)
+
+	result = []
+	is_filtered = False
+
+	if query.get('especie') is not None:
+		for animal in animais:
+			if animal.get('especie') == query.get('especie'):
+				result.append(animal)
+		is_filtered = True
+
+	result = animais if not is_filtered else result
+
 	if len(animais) == 0:
 		return ('', HTTPStatus.NO_CONTENT)
 
@@ -52,6 +71,15 @@ def cadastrar_animal():
 	animais.append(animal) # Aqui já tratamos as informação recebidas e adicionamos no nosso Banco de Dados.
 	return {'messagem': 'Animal cadastrado com sucesso'}
 
+
+# Path Params são parametros que podemos receber nos endpoints passados através das rotas.
+# Perceba no exemplo abaixo que onde queremos colocar o parametro informamos “<tipo:parametro>”, e também precisamos informar esse parametro na assinatura da função (”detalhar_animal(id: str)”).
+@app.route('/animais/<id>', methods=['GET'])
+def detalhar_animal(id: str):
+	for animal in animais:
+		if animal.get('id') == id:
+			return animal
+	return ({'message': 'Animal não encontrada'}, HTTPStatus.NOT_FOUND)
 
 
 
