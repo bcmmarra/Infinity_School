@@ -25,6 +25,21 @@ class Livro:
         self.ano = ano
         self.autor = autor
 
+# Podemos colocar os atributos em linhas separadas.
+# class Livro: 
+#     def __init__(
+#             self,
+#             titulo: str,
+#             editora: str,
+#             ano: int = None,
+#             autor: str = None
+#             ) -> None:
+
+#         self.titulo = titulo
+#         self.editora = editora
+#         self.ano = ano
+#         self.autor = autor
+
 l1 = Livro("Hábitos Atômicos", "Alta Life", 2019, "James Clear")
 print(f'Título: {l1.titulo}')
 print(f'Editora: {l1.editora}')
