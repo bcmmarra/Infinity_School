@@ -1,0 +1,80 @@
+👨‍💻 Planejamento de um Sistema de Funcionários e Departamentos (Passo a Passo)
+Nosso objetivo é criar um sistema que utilize Herança para modelar diferentes tipos de funcionários e Composição/Encapsulamento para gerenciar departamentos.
+
+🎯 Passo 1: Definir a Classe Base (Abstração)
+A primeira classe que você precisa conceber é a Classe Base para todos os funcionários, chamaremos de Funcionario. Esta classe representa a Abstração de um funcionário genérico.
+
+Identificação: Defina o que todo funcionário, independentemente da função, deve ter.
+
+Atributos de Instância: _nome, _salario e _id (todos devem ser definidos como protegidos usando um underscore para indicar encapsulamento).
+
+Método Construtor (__init__): O método deve aceitar e inicializar nome, salario e id.
+
+Método Abstrato (Comportamento): Crie um método, como calcular_bonus(), que deve ser obrigatório para todas as subclasses (use from abc import ABC, abstractmethod).
+
+Método Comum: Crie um método como exibir_detalhes_basicos() para que todas as subclasses possam chamar essa funcionalidade comum (ex: "ID: [ID] - Nome: [Nome]").
+
+🛠️ Passo 2: Implementar as Subclasses (Herança e Polimorfismo)
+Agora, defina dois tipos específicos de funcionários que herdarão de Funcionario.
+
+2.1. Subclasse Gerente
+Herança: Esta classe deve herdar de Funcionario.
+
+Atributo Específico: Adicione um atributo único, como _departamento_gerenciado (também protegido).
+
+Construtor: O construtor de Gerente deve aceitar os atributos da classe base (nome, salario, id) mais o atributo específico (departamento_gerenciado). Crucial: Você deve chamar o construtor da classe pai usando a função super().__init__(...) para inicializar os atributos herdados.
+
+Polimorfismo (Sobrescrita): Implemente o método obrigatório calcular_bonus(). Um gerente pode ter um bônus de 10% do salário, por exemplo.
+
+2.2. Subclasse Desenvolvedor
+Herança: Esta classe também deve herdar de Funcionario.
+
+Atributo Específico: Adicione um atributo como _tecnologias (uma lista de strings protegida).
+
+Construtor: O construtor deve chamar o super().__init__(...) e inicializar _tecnologias.
+
+Polimorfismo (Sobrescrita): Implemente o método calcular_bonus(). Um desenvolvedor pode ter um bônus fixo menor ou uma porcentagem diferente, como 5% do salário.
+
+🚪 Passo 3: Criar a Classe de Agregação/Composição (Encapsulamento Avançado)
+Crie a classe Departamento para gerenciar um grupo de funcionários. Isso demonstra o princípio de Composição/Agregação, onde um objeto é composto por outros objetos.
+
+Atributos:
+
+_nome_departamento: O nome do departamento (ex: "TI", "Vendas").
+
+_funcionarios: Uma lista privada (__funcionarios) que armazenará as instâncias das classes Gerente e Desenvolvedor.
+
+Métodos de Controle (Encapsulamento):
+
+adicionar_funcionario(funcionario): Recebe um objeto Funcionario (ou qualquer subclasse) e o adiciona à lista _funcionarios.
+
+remover_funcionario(id): Busca o funcionário pelo ID e o remove da lista.
+
+exibir_todos_funcionarios(): Itera sobre a lista de _funcionarios e chama o método exibir_detalhes_basicos() de cada objeto (demonstrando Polimorfismo novamente).
+
+calcular_custo_total(): Itera sobre a lista, soma o _salario de cada funcionário e retorna o total.
+
+🧪 Passo 4: Cenário de Teste (Instanciação e Uso)
+Finalmente, crie um roteiro de teste para usar suas classes:
+
+Instancie Objetos:
+
+Crie um objeto Departamento (ex: dpto_ti).
+
+Crie um objeto Gerente (ex: gerente_a).
+
+Crie dois objetos Desenvolvedor (ex: dev_x, dev_y).
+
+Use a Composição: Adicione o gerente e os desenvolvedores ao dpto_ti usando o método adicionar_funcionario().
+
+Teste o Comportamento:
+
+Chame o método calcular_bonus() em cada funcionário individualmente para verificar o Polimorfismo (o cálculo deve ser diferente para o Gerente e para os Desenvolvedores).
+
+Chame dpto_ti.exibir_todos_funcionarios() para ver a lista completa.
+
+Chame dpto_ti.calcular_custo_total().
+
+Chame dpto_ti.remover_funcionario() e verifique a lista novamente.
+
+Ao seguir esses quatro passos, você terá aplicado com sucesso os princípios de Abstração, Herança, Polimorfismo e Encapsulamento/Composição em seu código.
