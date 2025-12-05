@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 @dataclass
 class Conta:
-    titulo: str
+    titular: str
     numero: str
     saldo: float
 
@@ -24,9 +24,3 @@ class Conta:
     def transferir(self, valor: float, destino: "Conta"):
         self.sacar(valor)
         destino.depositar(valor)
-
-
-conta1 = Conta('Davi', '12345', 100)
-print(conta1)
-
-print(conta1.saldo)

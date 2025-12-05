@@ -32,21 +32,23 @@ class Conta:
         self.sacar(valor)
         destino.depositar(valor)
 
+    def __str__(self):
+        return f'{self.__class__.__name__} de {self.titular} - R$ {self.saldo}'
 
-conta1 = Conta('Davi', '12345', 100)
-conta2 = Conta('Fernanda', '12544', 200)
+# conta1 = Conta('Davi', '12345', 100)
+# conta2 = Conta('Fernanda', '12544', 200)
+
+# # print('Conta de', conta1.titular, f'- R${conta1.saldo:.2f}')
+# # conta1.depositar(50)
+# # print('Conta de', conta1.titular, f'- R${conta1.saldo:.2f}')
+# # conta1.sacar(70)
+# # print('Conta de', conta1.titular, f'- R${conta1.saldo:.2f}')
+
 
 # print('Conta de', conta1.titular, f'- R${conta1.saldo:.2f}')
-# conta1.depositar(50)
+# print('Conta de', conta2.titular, f'- R${conta2.saldo:.2f}')
+
+# conta2.transferir(70, conta1)
+
 # print('Conta de', conta1.titular, f'- R${conta1.saldo:.2f}')
-# conta1.sacar(70)
-# print('Conta de', conta1.titular, f'- R${conta1.saldo:.2f}')
-
-
-print('Conta de', conta1.titular, f'- R${conta1.saldo:.2f}')
-print('Conta de', conta2.titular, f'- R${conta2.saldo:.2f}')
-
-conta2.transferir(70, conta1)
-
-print('Conta de', conta1.titular, f'- R${conta1.saldo:.2f}')
-print('Conta de', conta2.titular, f'- R${conta2.saldo:.2f}')
+# print('Conta de', conta2.titular, f'- R${conta2.saldo:.2f}')
