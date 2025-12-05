@@ -41,3 +41,11 @@ class Estagiario(Funcionario):
         super().__init__(nome, salario)
         self.supervisor = supervisor
 
+        def calcular_imposto_renda(self):
+            return 0
+
+g1 = Gerente('Bruno', 3.500, 'Licitação')
+print(g1.calcular_imposto_renda())
+
+e1 = Estagiario('Gigi', 1000, 'Bruno')
+print(e1.calcular_imposto_renda())
