@@ -1,0 +1,72 @@
+-- DDL - Data Definition Language
+-- CREATE (criar)
+-- ALTER (alterar)
+-- DROP (excluir)
+
+-- Criar Banco de Dados Sintexe: CREATE DATABASE <NOMEDOBANCO>;
+CREATE DATABASE hospital;
+
+-- Apagar Banco de Dados
+-- DROP DATABASE hospital;
+
+-- Abrir o BD. Todos os comandos vão ser executados no BD aberto.
+USE hospital;
+/*
+-- Criar a TABELA
+Sintaxe
+CREATE TABLE <NOME> (
+	<COLUNA> <TIPO> <RESTRICAO1> <RESTRICAO2>...,
+	<COLUNA> <TIPO> <RESTRICAO1> <RESTRICAO2>...,
+);
+
+Lista de Restrições
+PRIMARY KEY - Informa que aquela coluna é a chave primária da tabela, coluna que irá identificar o registro.
+AUTO_INCREMENT - Informa que aquela coluna será auto incrementada toda vez que um novo registro for inserido.
+UNIQUE - Informa que naquela coluna, todos os registros devem ser únicos.
+NOT NULL - Informa que para inserir um registro, a coluna não pode ser nula.
+DEFAULT - Informa um valor padrão para ser inserido quando não informado.
+*/
+
+CREATE TABLE pacientes (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    cpf VARCHAR(11) NOT NULL UNIQUE,
+    data_nascimento DATE NOT NULL,
+    ativo BOOL NOT NULL DEFAULT TRUE
+);
+
+CREATE TABLE medicos (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255),
+    data_nascimento DATE NOT NULL,
+    ativo BOOL NOT NULL DEFAULT TRUE,
+    crm VARCHAR(6) NOT NULL UNIQUE
+);
+-- Depois que Criar a tabela, para criar nova coluna.
+-- DROP TABLE medicos (Vai excluir a tabela inteira) indicado para quando não tem nenhum dado na TABELA.
+
+
+-- DQL - Data Query Language
+-- SELECT (Consultar a Tabela)
+
+SELECT * FROM pacientes;
+
+-- DML - Data Manipulation Language
+-- INSERT (Inserir registros)
+-- UPDATE
+-- DELETE
+
+-- Obrigatório passar todos os dados de todas as COLUNAS (Quase não usado essa forma)
+INSERT INTO pacientes
+VALUES (1, 'João', '12345678910', '1980-02-20', TRUE);
+
+INSERT INTO pacientes (nome, cpf, data_nascimento)
+VALUES ('Camila', '00000000011', '1989-12-07'),
+       ('Giovanna', '00000000111', '2021-05-02');
+
+/*
+Esse comando vai dar erro, pq o paciente Camila (CPF) já foi adicionado anteriormente. Nenhum paciente vai ser adicionado.
+INSERT INTO pacientes (nome, cpf, data_nascimento)
+VALUES ('Camila', '00000000011', '1989-12-07'),
+       ('João Pedro', '00000001111', '2019-10-02');
+*/
