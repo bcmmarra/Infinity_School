@@ -16,6 +16,16 @@ ORDER BY
 -- ASC = Ascendente
 -- DESC = Descendente
 
+SELECT
+	ps.id,
+    ps.convenio,
+    ps.numero as numero_do_plano,
+    p.nome as titular,
+    p.cpf as documento
+FROM
+	planos_saude ps
+    INNER JOIN pacientes p ON ps.paciente_id = p.id
+-- Faz a consulta na tabela planos de saude e junta com a tabela de paciente 
 
 -- Insert - Adicionar Registros
 INSERT INTO pacientes(nome, cpf, data_nascimento)
