@@ -1,6 +1,22 @@
 -- Select - Buscar Registros
 SELECT * FROM pacientes;
 
+SELECT
+	id,
+    nome,
+    cpf,
+    data_nascimento,
+    ativo
+FROM
+	pacientes
+-- WHERE
+-- ativo = 1 AND YEAR(data_nascimento) < 1990;
+ORDER BY
+	data_nascimento DESC;
+-- ASC = Ascendente
+-- DESC = Descendente
+
+
 -- Insert - Adicionar Registros
 INSERT INTO pacientes(nome, cpf, data_nascimento)
 VALUES ('Natan', '12345678912', '1996-02-17');
